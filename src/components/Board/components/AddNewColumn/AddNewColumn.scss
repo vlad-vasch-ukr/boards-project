@@ -1,0 +1,29 @@
+.add-column {
+  @apply w-[270px] min-w-[270px] bg-gray-300 px-2 py-3 rounded-xl hover:bg-gray-200 transition-colors duration-300 cursor-pointer;
+
+  &.active {
+    @apply hover:bg-gray-300;
+  }
+
+  &__title {
+    @apply pl-8 px-2 pr-2 relative;
+
+    svg {
+      @apply absolute left-0 top-0;
+    }
+  }
+
+  &__form {
+    input {
+      @apply block w-full;
+    }
+  }
+
+  &__actions {
+    @apply mt-3 flex items-center;
+  }
+
+  button.add-column__add {
+    @apply bg-blue-800 text-white py-1 px-8 inline-block hover:bg-blue-600 transition-colors duration-300 mr-2;
+  }
+}

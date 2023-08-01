@@ -1,0 +1,37 @@
+.custom-input {
+  @apply max-w-xs w-full;
+
+  &__label {
+    @apply block mb-1 text-sm font-medium;
+
+    span {
+      @apply text-red-700;
+    }
+  }
+
+  &__field {
+    @apply w-full rounded-md bg-white py-1.5 pl-3 pr-10 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-indigo-500 sm:text-sm sm:leading-6 select-none cursor-pointer;
+
+    &.error {
+      @apply ring-red-700;
+    }
+  }
+
+  &__container {
+    @apply relative;
+
+    &.with-icon {
+      input {
+        @apply pl-10;
+      }
+    }
+  }
+
+  &__icon {
+    @apply absolute top-1.5 left-2;
+  }
+
+  &__error {
+    @apply text-red-700 mt-1 h-6;
+  }
+}

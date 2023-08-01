@@ -1,0 +1,30 @@
+main {
+  min-height: calc(100% - 64px);
+  @apply flex items-stretch py-14 mx-auto max-w-7xl px-8;
+
+  input {
+    @apply font-medium text-blue-950 px-1;
+
+    &:focus {
+      @apply border-0 outline-2 outline-blue-600;
+    }
+  }
+
+  .simplebar-track {
+    @apply bg-gray-200 rounded-xl;
+
+    .simplebar-scrollbar {
+      &:before {
+        @apply top-0 left-0 right-0 bottom-0 bg-gray-500;
+      }
+    }
+  }
+
+  .simplebar-horizontal {
+    @apply h-[10px];
+  }
+
+  .simplebar-vertical {
+    @apply w-[10px];
+  }
+}

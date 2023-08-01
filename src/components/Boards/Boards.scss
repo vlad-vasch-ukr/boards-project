@@ -1,0 +1,51 @@
+@import '../../assets/scss/variables';
+
+.boards {
+  &__title {
+    @apply text-2xl font-semibold pb-3 mb-3 border-b-[1px] border-gray-300;
+  }
+
+  &__list {
+    @apply flex -mx-2 mt-8;
+  }
+
+  &__filters {
+    @apply flex;
+  }
+
+  .card {
+    @apply p-2 w-1/4 cursor-pointer select-none;
+
+    .card-wrapper {
+      @apply rounded-lg overflow-hidden relative;
+    }
+  }
+
+  &__create {
+    div {
+      @apply min-h-[96px] bg-gray-300 flex items-center justify-center;
+    }
+  }
+
+  &__item {
+    &:hover .boards__item-icon  {
+      @apply right-2;
+    }
+
+    &-icon {
+      @apply absolute -right-6 transition-all duration-300 bottom-4;
+    }
+  }
+
+  .blue {
+    background-image: $blue-gradient;
+  }
+
+  .yellow {
+    background-image: $yellow-gradient;
+  }
+
+  .red {
+    background-image: $red-gradient;
+  }
+}

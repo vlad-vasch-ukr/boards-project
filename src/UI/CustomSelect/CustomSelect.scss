@@ -1,0 +1,47 @@
+.custom-select {
+  @apply max-w-xs w-full;
+
+  .icon svg {
+    @apply transition-transform duration-300 origin-center;
+  }
+
+  &.active {
+    .icon svg {
+      @apply rotate-180;
+    }
+  }
+
+  &__label {
+    @apply block mb-1 text-sm font-medium;
+  }
+
+  &__container {
+    @apply relative;
+  }
+
+  &__selected {
+    @apply relative w-full rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:text-sm sm:leading-6 select-none cursor-pointer;
+
+    span {
+      &:first-child {
+        @apply ml-3 block truncate;
+      }
+
+      &:last-child {
+        @apply pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2;
+      }
+    }
+  }
+
+  &__list {
+    @apply absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm max-h-56;
+
+    li {
+      @apply text-gray-900 relative select-none py-2 pl-3 pr-9 cursor-pointer hover:bg-blue-400 transition-colors duration-300;
+
+      &.active {
+        @apply bg-blue-400;
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.column-card {
+  @apply bg-white rounded-xl block p-2 cursor-pointer mb-1.5;
+
+  &__info {
+    @apply mt-3 flex items-center;
+
+    span:first-child {
+      @apply mr-2;
+    }
+  }
+}

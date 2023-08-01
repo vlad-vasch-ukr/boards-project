@@ -1,0 +1,36 @@
+.board-column {
+  @apply bg-gray-300 rounded-xl pb-2 pl-2 pr-5 w-[270px] min-w-[270px] mr-4 flex flex-col;
+
+  &.is-dragging {
+    //rotate: 2deg;
+    //transform-origin: center;
+  }
+
+  &__header {
+    @apply px-2 py-3;
+
+    input {
+      @apply bg-gray-300 py-1 block w-full;
+    }
+  }
+
+  &__scrollbar {
+    max-height: calc(100vh - 170px - 7rem);
+
+    .simplebar-track {
+      right: -15px;
+    }
+  }
+
+  &__actions {
+    @apply pt-2 mt-auto;
+  }
+
+  &__add {
+    @apply w-full block pl-7 hover:bg-gray-400 transition-colors duration-300 rounded-lg py-1 text-left relative;
+
+    svg {
+      @apply absolute left-0 top-1;
+    }
+  }
+}
