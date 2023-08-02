@@ -47,3 +47,10 @@ export function createNewColumnObject(title) {
     cards: []
   }
 }
+
+export function createNewCardObject(name) {
+  return {
+    id: uniqid(),
+    name
+  }
+}

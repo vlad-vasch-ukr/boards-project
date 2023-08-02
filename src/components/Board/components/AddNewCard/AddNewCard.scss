@@ -1,0 +1,25 @@
+.add-item {
+  &__field {
+    @apply bg-white rounded-xl overflow-hidden p-2;
+
+    textarea {
+      @apply outline-0 block max-w-full;
+    }
+  }
+
+  &__actions {
+    @apply mt-2 flex;
+
+    .add-item__add {
+      @apply bg-blue-800 text-white py-1 px-8 inline-block hover:bg-blue-600 transition-all duration-300 mr-2;
+
+      &:disabled {
+        @apply opacity-50;
+
+        &:hover {
+          @apply bg-blue-800;
+        }
+      }
+    }
+  }
+}

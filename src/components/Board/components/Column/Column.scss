@@ -17,6 +17,10 @@
   &__scrollbar {
     max-height: calc(100vh - 170px - 7rem);
 
+    &.add-new-card {
+      max-height: calc(100vh - 130px - 7rem);
+    }
+
     .simplebar-track {
       right: -15px;
     }

@@ -11,9 +11,9 @@ import reorder, { reorderItemsMap, createNewColumnObject } from './helpers/index
 import './Board.scss';
 
 function Board() {
-  const { id } = useParams();
+  const { id: boardId } = useParams();
   const [columnTitle, setColumnTitle] = useState('');
-  const columns = useSelector((state) => columnsSelector(state, id));
+  const columns = useSelector((state) => columnsSelector(state, boardId));
   const dispatch = useDispatch();
 
   const onDragEnd = (result) => {
@@ -33,7 +33,7 @@ function Board() {
     if (result.type === "COLUMN") {
       const reorderedOrder = reorder(columns, source.index, destination.index);
 
-      dispatch(updateColumnsOrder({ data: reorderedOrder, id }));
+      dispatch(updateColumnsOrder({ data: reorderedOrder, boardId }));
 
       return;
     }
@@ -44,12 +44,12 @@ function Board() {
       destination
     });
 
-    dispatch(updateCards({ data, id }));
+    dispatch(updateCards({ data, boardId }));
   };
   const inputColumnTitle = (e) => setColumnTitle(e.target.value);
   const addNewColumnEvent = () => {
     const newColumn = createNewColumnObject(columnTitle);
-    dispatch(addNewColumn({ data: newColumn, id }));
+    dispatch(addNewColumn({ data: newColumn, boardId }));
   }
 
   if (!columns) return null;
@@ -72,6 +72,7 @@ function Board() {
                     title={title}
                     id={id}
                     items={cards}
+                    boardId={boardId}
                   />
                 ))}
                 {provided.placeholder}
