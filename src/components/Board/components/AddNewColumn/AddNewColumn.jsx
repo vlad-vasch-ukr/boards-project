@@ -19,6 +19,10 @@ function AddNewColumn({ onChange, onClick, value }) {
     }
   }
   const closeForm = () => setOpen(false);
+  const addNewColumnHandler = () => {
+    onClick();
+    closeForm();
+  }
 
   return (
     <div className={['add-column', isOpen ? 'active' : ''].join(' ')} onClick={openForm} ref={ref}>
@@ -37,7 +41,7 @@ function AddNewColumn({ onChange, onClick, value }) {
               onChange={onChange}
             />
             <div className="add-column__actions">
-              <button type="button" onClick={onClick} className="add-column__add">Add</button>
+              <button type="button" onClick={addNewColumnHandler} className="add-column__add">Add</button>
               <button type="button" onClick={closeForm}>
                 <Icon variant="close" />
               </button>

@@ -11,16 +11,16 @@ export const boardsReducer = createSlice({
   initialState,
   reducers: {
     updateCards: (state, { payload }) => {
-      for (const item of payload) {
-        const column = state.boards[state.currentBoard].columns.find((column) => column.id === item.listId);
+      for (const item of payload.data) {
+        const column = state.boards.find((board) => board.id === payload.id).columns.find((column) => column.id === item.listId);
         column.cards = item.cardsMap;
       }
     },
     updateColumnsOrder: (state, { payload }) => {
-      state.boards[state.currentBoard].columns = payload
+      state.boards.find((board) => board.id === payload.id).columns = payload.data
     },
     addNewColumn: (state, { payload }) => {
-      state.boards[state.currentBoard].columns.push(payload)
+      state.boards.find((board) => board.id === payload.id).columns.push(payload.data)
     },
     addNewBoard: (state, { payload }) => {
       state.boards.push(payload);

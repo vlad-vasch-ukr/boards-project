@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
 import { Droppable, DragDropContext } from '@hello-pangea/dnd';
 import Column from '../Column/Column.jsx';
@@ -10,8 +11,9 @@ import reorder, { reorderItemsMap, createNewColumnObject } from './helpers/index
 import './Board.scss';
 
 function Board() {
+  const { id } = useParams();
   const [columnTitle, setColumnTitle] = useState('');
-  const columns = useSelector((state) => columnsSelector(state,'first'));
+  const columns = useSelector((state) => columnsSelector(state, id));
   const dispatch = useDispatch();
 
   const onDragEnd = (result) => {
@@ -31,7 +33,7 @@ function Board() {
     if (result.type === "COLUMN") {
       const reorderedOrder = reorder(columns, source.index, destination.index);
 
-      dispatch(updateColumnsOrder(reorderedOrder));
+      dispatch(updateColumnsOrder({ data: reorderedOrder, id }));
 
       return;
     }
@@ -42,12 +44,12 @@ function Board() {
       destination
     });
 
-    dispatch(updateCards(data));
+    dispatch(updateCards({ data, id }));
   };
   const inputColumnTitle = (e) => setColumnTitle(e.target.value);
   const addNewColumnEvent = () => {
     const newColumn = createNewColumnObject(columnTitle);
-    dispatch(addNewColumn(newColumn));
+    dispatch(addNewColumn({ data: newColumn, id }));
   }
 
   if (!columns) return null;

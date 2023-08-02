@@ -56,7 +56,7 @@ Column.propTypes = {
   onInput: PropTypes.func,
   index: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   items: PropTypes.array,
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isDragging: PropTypes.bool
 }
 

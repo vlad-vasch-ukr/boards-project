@@ -84,9 +84,16 @@ export const data = [
     },
     "columns": [
       {
-        "id": 3,
-        "title": "Etiam nec dolor quis risus feugiat venenatis. Sed rhoncus."
+        "id": '3',
+        "title": "Column one"
       }
     ]
+  }
+];
+
+export const covers = [
+  {
+    type: 'image',
+    url: ''
   }
 ];
