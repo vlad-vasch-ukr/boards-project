@@ -12,7 +12,6 @@ import './Board.scss';
 
 function Board() {
   const { id: boardId } = useParams();
-  const [columnTitle, setColumnTitle] = useState('');
   const columns = useSelector((state) => columnsSelector(state, boardId));
   const dispatch = useDispatch();
 
@@ -46,9 +45,8 @@ function Board() {
 
     dispatch(updateCards({ data, boardId }));
   };
-  const inputColumnTitle = (e) => setColumnTitle(e.target.value);
-  const addNewColumnEvent = () => {
-    const newColumn = createNewColumnObject(columnTitle);
+  const addNewColumnEvent = (title) => {
+    const newColumn = createNewColumnObject(title);
     dispatch(addNewColumn({ data: newColumn, boardId }));
   }
 
@@ -80,11 +78,7 @@ function Board() {
             )}
           </Droppable>
         </DragDropContext>
-        <AddNewColumn
-          value={columnTitle}
-          onChange={inputColumnTitle}
-          onClick={addNewColumnEvent}
-        />
+        <AddNewColumn onClick={addNewColumnEvent} />
       </div>
     </SimpleBar>
   );

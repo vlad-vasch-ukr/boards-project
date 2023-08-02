@@ -1,0 +1,11 @@
+button.custom-button {
+  @apply bg-blue-800 text-white py-1 px-8 inline-block hover:bg-blue-600 transition-all duration-300 mr-2;
+
+  &:disabled {
+    @apply opacity-50;
+
+    &:hover {
+      @apply bg-blue-800;
+    }
+  }
+}

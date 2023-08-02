@@ -2,10 +2,12 @@ import { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { useClickAway } from '@uidotdev/usehooks';
 import { Icon } from '../../../../UI/Icons/index.js';
+import Button from '../../../../UI/Button/Button.jsx';
 import './AddNewColumn.scss';
 
-function AddNewColumn({ onChange, onClick, value }) {
+function AddNewColumn({ onClick, value }) {
   const [isOpen, setOpen] = useState(false);
+  const [columnTitle, setColumnTitle] = useState('');
   const inputRef = useRef(null);
   const ref = useClickAway(() => {
     setOpen(false);
@@ -18,10 +20,13 @@ function AddNewColumn({ onChange, onClick, value }) {
       setOpen(true);
     }
   }
+  const inputColumnTitle = (e) => setColumnTitle(e.target.value);
   const closeForm = () => setOpen(false);
   const addNewColumnHandler = () => {
-    onClick();
-    closeForm();
+    if (columnTitle) {
+      onClick(columnTitle);
+      setColumnTitle('');
+    }
   }
 
   return (
@@ -36,12 +41,18 @@ function AddNewColumn({ onChange, onClick, value }) {
           <div className="add-column__form">
             <input
               type="text"
-              value={value}
+              value={columnTitle}
               ref={inputRef}
-              onChange={onChange}
+              onChange={inputColumnTitle}
             />
             <div className="add-column__actions">
-              <button type="button" onClick={addNewColumnHandler} className="add-column__add">Add</button>
+              <Button
+                  onClick={addNewColumnHandler}
+                  className="add-column__add"
+                  disabled={!columnTitle}
+              >
+                Add
+              </Button>
               <button type="button" onClick={closeForm}>
                 <Icon variant="close" />
               </button>
@@ -54,9 +65,7 @@ function AddNewColumn({ onChange, onClick, value }) {
 }
 
 AddNewColumn.propTypes = {
-  onChange: PropTypes.func,
-  onClick: PropTypes.func,
-  value: PropTypes.string
+  onClick: PropTypes.func
 }
 
 export default AddNewColumn;

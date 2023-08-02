@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import classnames from 'tailwindcss-classnames';
+import './Button.scss';
 
 function Button({type, onClick, disabled, className, children, ...props}) {
 
   return (
     <button
       type={type}
-      className={classnames(className, 'border', 'text-white', 'rounded', 'px-4', 'py-2', 'transition', 'duration-500', 'ease', 'select-none', 'focus:outline-none', 'focus:shadow-outline')}
+      className={classnames(className, 'custom-button')}
       onClick={onClick}
       disabled={disabled}
       {...props}

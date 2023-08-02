@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from '../../../../UI/Icons/index.js';
+import Button from '../../../../UI/Button/Button.jsx';
 import './AddNewCard.scss';
 
 function AddNewCard({ onClose, onClick, cols, rows, placeholder }) {
@@ -31,14 +32,13 @@ function AddNewCard({ onClose, onClick, cols, rows, placeholder }) {
                 />
             </div>
             <div className="add-item__actions">
-                <button
-                    type="button"
+                <Button
                     className="add-item__add"
                     disabled={!cardTitle}
                     onClick={clickAddHandler}
                 >
                     Add card
-                </button>
+                </Button>
                 <button type="button" onClick={onClose}>
                     <Icon variant="close" />
                 </button>
