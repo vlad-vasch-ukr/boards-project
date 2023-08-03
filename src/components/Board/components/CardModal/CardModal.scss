@@ -1,0 +1,33 @@
+.card-modal {
+  @apply fixed w-full h-full bg-black bg-opacity-50 flex items-center justify-center top-0 left-0;
+
+  &__body {
+    @apply bg-gray-300 rounded-xl shadow p-4 min-w-[800px] max-w-[800px] ring-inset ring-gray-900;
+  }
+
+  &__container {
+    @apply flex;
+
+    & > div:first-child {
+      width: 70%;
+    }
+  }
+
+  &__header {
+    &-wrapp {
+      @apply flex pr-12 relative;
+    }
+
+    &-icon {
+      @apply mr-4;
+    }
+  }
+
+  &__title {
+    @apply font-medium;
+  }
+
+  &__close {
+    @apply absolute h-[30px] w-[30px] rounded-full transition-colors duration-300 hover:bg-gray-400 hover:bg-opacity-50 flex items-center justify-center right-1 top-0;
+  }
+}

@@ -13,7 +13,7 @@ import { createNewCardObject } from '../Board/helpers/index.js';
 import './Column.scss';
 
 function Column(props) {
-  const {title, index, id, items, boardId} = props;
+  const {title, index, id, items, boardId, onCardClick} = props;
   const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
   const ref = useClickAway(() => setIsOpened(false));
@@ -54,6 +54,8 @@ function Column(props) {
                 listId={id}
                 listType="QUOTE"
                 items={items}
+                onCardClick={onCardClick}
+                columnId={id}
               />
               { isOpened && (
                   <div ref={ref}>
@@ -91,12 +93,14 @@ Column.propTypes = {
   items: PropTypes.array,
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isDragging: PropTypes.bool,
-  boardId: PropTypes.string
+  boardId: PropTypes.string,
+  onCardClick: PropTypes.func
 }
 
 Column.defaultProps = {
   title: '',
-  items: []
+  items: [],
+  onCardClick: () => {}
 }
 
 export default Column;

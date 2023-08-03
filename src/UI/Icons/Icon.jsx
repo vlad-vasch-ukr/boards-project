@@ -6,6 +6,7 @@ import { IconClip } from './IconComponents/IconClip.jsx';
 import { IconStar } from './IconComponents/IconStar.jsx';
 import { IconArrow } from './IconComponents/IconArrow.jsx';
 import { IconSearch } from './IconComponents/IconSearch.jsx';
+import { IconTitle } from './IconComponents/IconTitle.jsx';
 
 export const Icon = ({
   variant,
@@ -21,7 +22,8 @@ export const Icon = ({
     clip: IconClip,
     star: IconStar,
     arrow: IconArrow,
-    search: IconSearch
+    search: IconSearch,
+    title: IconTitle
   };
   const Component = listIcons[variant];
   return (

@@ -3,8 +3,11 @@ import { Icon } from '../../../../UI/Icons/index.js';
 import './Card.scss';
 
 function Card(props) {
-  const { item, provided } = props;
+  const { item, provided, onCardClick, columnId } = props;
   const { name, description } = item;
+  const clickHandler = () => {
+    onCardClick(item);
+  };
 
   return (
     <div
@@ -12,6 +15,7 @@ function Card(props) {
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}
+      onClick={clickHandler}
     >
       <p className="column-card__description">{name}</p>
       <div className="column-card__info">
@@ -32,7 +36,9 @@ function Card(props) {
 }
 
 Card.propTypes = {
-  item: PropTypes.object
+  item: PropTypes.object,
+  onCardClick: PropTypes.func,
+  columnId: PropTypes.string
 }
 
 export default Card;

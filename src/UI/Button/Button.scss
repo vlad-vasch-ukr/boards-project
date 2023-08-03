@@ -1,11 +1,27 @@
 button.custom-button {
-  @apply bg-blue-800 text-white py-1 px-8 inline-block hover:bg-blue-600 transition-all duration-300 mr-2;
+  @apply inline-block transition-all duration-300 mr-2;
+
+  &:not(.gray) {
+    @apply bg-blue-800 text-white py-1 px-8 hover:bg-blue-600;
+  }
 
   &:disabled {
     @apply opacity-50;
 
-    &:hover {
+    &:not(.gray):hover {
       @apply bg-blue-800;
+    }
+  }
+
+  &.gray {
+    @apply bg-gray-500 hover:bg-gray-400 bg-opacity-25 rounded-sm px-3 py-1;
+  }
+
+  &.with-icon {
+    @apply flex items-center;
+
+    svg {
+      @apply mr-2;
     }
   }
 }

@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, useSearchParams  } from 'react-router-dom';
 import SimpleBar from 'simplebar-react';
 import { Droppable, DragDropContext } from '@hello-pangea/dnd';
 import Column from '../Column/Column.jsx';
 import AddNewColumn from '../AddNewColumn/AddNewColumn.jsx';
-import { columnsSelector } from '../../../../reducers/boardsReducer/selectors.js';
+import CardModal from '../CardModal/CardModal.jsx';
+import { columnsSelector, cardSelectorById } from '../../../../reducers/boardsReducer/selectors.js';
 import { updateCards, updateColumnsOrder, addNewColumn } from '../../../../reducers/boardsReducer/boardsReducer.js';
 import reorder, { reorderItemsMap, createNewColumnObject } from './helpers/index.js';
 import './Board.scss';
 
 function Board() {
   const { id: boardId } = useParams();
+  const [ searchParams, setSearchParams ] = useSearchParams();
   const columns = useSelector((state) => columnsSelector(state, boardId));
+  const selectedCard = useSelector((state) => cardSelectorById(state, boardId, searchParams.get('col'), searchParams.get('row')));
+  const [ isModalOpened, setModalOpened ] = useState(!!selectedCard);
   const dispatch = useDispatch();
 
   const onDragEnd = (result) => {
@@ -49,38 +53,48 @@ function Board() {
     const newColumn = createNewColumnObject(title);
     dispatch(addNewColumn({ data: newColumn, boardId }));
   }
+  const clickCardHandler = (column, card) => {
+    setSearchParams((prev) => ({ ...prev, col: column.id, row: card.id }))
+    console.log(card)
+    setModalOpened(true)
+  }
+  const closeModal = () => setModalOpened(false);
 
   if (!columns) return null;
 
   return (
-    <SimpleBar className="columns-list__scrollbar" autoHide={false}>
-      <div className="columns-list">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <Droppable
-            droppableId="board"
-            type="COLUMN"
-            direction="horizontal"
-          >
-            {(provided) => (
-              <div className="flex items-start" ref={provided.innerRef} {...provided.droppableProps}>
-                {columns.map(({ id, title, cards }, index) => (
-                  <Column
-                    key={id}
-                    index={index}
-                    title={title}
-                    id={id}
-                    items={cards}
-                    boardId={boardId}
-                  />
-                ))}
-                {provided.placeholder}
-              </div>
-            )}
-          </Droppable>
-        </DragDropContext>
-        <AddNewColumn onClick={addNewColumnEvent} />
-      </div>
-    </SimpleBar>
+    <>
+      <SimpleBar className="columns-list__scrollbar" autoHide={false}>
+        <div className="columns-list">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <Droppable
+                droppableId="board"
+                type="COLUMN"
+                direction="horizontal"
+            >
+              {(provided) => (
+                  <div className="flex items-start" ref={provided.innerRef} {...provided.droppableProps}>
+                    {columns.map(({ id, title, cards }, index) => (
+                        <Column
+                            key={id}
+                            index={index}
+                            title={title}
+                            id={id}
+                            items={cards}
+                            boardId={boardId}
+                            onCardClick={clickCardHandler.bind(null, { id, title })}
+                        />
+                    ))}
+                    {provided.placeholder}
+                  </div>
+              )}
+            </Droppable>
+          </DragDropContext>
+          <AddNewColumn onClick={addNewColumnEvent} />
+        </div>
+      </SimpleBar>
+      { isModalOpened && <CardModal onClose={closeModal} card={selectedCard} /> }
+    </>
   );
 }
 

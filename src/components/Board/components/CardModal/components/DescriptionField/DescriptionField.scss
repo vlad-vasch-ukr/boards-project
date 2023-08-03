@@ -1,0 +1,32 @@
+.description-field {
+  @apply mt-5;
+
+  &__header {
+    @apply flex items-center;
+  }
+
+  &__field, &__actions {
+    @apply mt-5;
+    padding-left: calc(24px + 0.5rem);
+  }
+
+  &__plug {
+    @apply bg-gray-500 hover:bg-gray-400 bg-opacity-25 rounded-sm h-[56px] py-2 px-3 transition-all duration-300 select-none text-sm cursor-pointer;
+  }
+
+  .editor {
+    @apply p-[6px] border-[1px];
+
+    .public-DraftStyleDefault-block {
+      @apply m-0 min-h-[220px];
+    }
+  }
+
+  .editor-wrapper {
+    @apply shadow-sm ring-1 ring-inset ring-gray-300 rounded bg-white overflow-hidden;
+  }
+
+  .editor-toolbar {
+    @apply m-0;
+  }
+}
