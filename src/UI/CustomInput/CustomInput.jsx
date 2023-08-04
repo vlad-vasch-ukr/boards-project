@@ -1,36 +1,38 @@
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'tailwindcss-classnames';
 import './CustomInput.scss';
 
-function CustomInput({ type, placeholder, onChange, error, icon, label, className, value, withError, required }) {
+const CustomInput  = forwardRef(({ type, placeholder, onChange, error, icon, label, className, value, withError, required }, ref) => {
   return (
-    <div className={classnames('custom-input', className)}>
-      {
-        label && (
-          <span className="custom-input__label">
-            { label }
-            { required && <span>*</span> }
-          </span>
-        )
-      }
-      <div className={classnames('custom-input__container', { 'with-icon': icon })}>
-        <input
-          className={classnames('custom-input__field', { error })}
-          type={type}
-          placeholder={placeholder}
-          onChange={onChange}
-          value={value}
-        />
+      <div className={classnames('custom-input', className)}>
         {
-          icon && <span className="custom-input__icon">{ icon() }</span>
+            label && (
+                <span className="custom-input__label">
+            { label }
+                  { required && <span>*</span> }
+          </span>
+            )
+        }
+        <div className={classnames('custom-input__container', { 'with-icon': icon })}>
+          <input
+              className={classnames('custom-input__field', { error })}
+              type={type}
+              placeholder={placeholder}
+              onChange={onChange}
+              value={value}
+              ref={ref}
+          />
+          {
+              icon && <span className="custom-input__icon">{ icon() }</span>
+          }
+        </div>
+        {
+            withError && <p className="custom-input__error">{ error }</p>
         }
       </div>
-      {
-        withError && <p className="custom-input__error">{ error }</p>
-      }
-    </div>
   );
-}
+});
 
 CustomInput.propTypes = {
   type: PropTypes.string,
