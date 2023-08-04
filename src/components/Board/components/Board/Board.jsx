@@ -76,7 +76,8 @@ function Board() {
                 type="COLUMN"
                 direction="horizontal"
             >
-              {(provided) => (
+              {(provided, { isDraggingOver }) => (
+
                   <div className="flex items-start" ref={provided.innerRef} {...provided.droppableProps}>
                     {columns.map(({ id, title, cards }, index) => (
                         <Column
@@ -86,6 +87,7 @@ function Board() {
                             id={id}
                             items={cards}
                             boardId={boardId}
+                            isDraggingOver={isDraggingOver}
                             onCardClick={clickCardHandler.bind(null, { id, title })}
                         />
                     ))}
@@ -97,7 +99,14 @@ function Board() {
           <AddNewColumn onClick={addNewColumnEvent} />
         </div>
       </SimpleBar>
-      { isModalOpened && <CardModal onClose={closeModal} card={selectedCard} /> }
+      { isModalOpened && (
+          <CardModal
+              onClose={closeModal}
+              card={selectedCard}
+              boardId={boardId}
+              columnId={searchParams.get('col')}
+          />
+      ) }
     </>
   );
 }

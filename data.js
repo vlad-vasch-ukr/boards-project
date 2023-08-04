@@ -13,7 +13,8 @@ export const data = [
         "cards": [
           {
             "id": '11',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": ''
           },
           {
             "id": '12',
@@ -22,7 +23,8 @@ export const data = [
           },
           {
             "id": '13',
-            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. "
+            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. ",
+            "description": ""
           },
           {
             "id": '14',
@@ -31,11 +33,13 @@ export const data = [
           },
           {
             "id": '15',
-            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. "
+            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. ",
+            "description": ""
           },
           {
             "id": '16',
-            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. "
+            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. ",
+            "description": ""
           }
         ]
       },
@@ -45,15 +49,18 @@ export const data = [
         "cards": [
           {
             "id": '21',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": ""
           },
           {
             "id": '22',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": ""
           },
           {
             "id": '23',
-            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. "
+            "name": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vel arcu nec massa imperdiet tempor. Donec est lorem, mattis a gravida nec, porttitor et urna. Praesent vel sollicitudin elit, a interdum turpis. ",
+            "description": ""
           },
           {
             "id": '24',
@@ -68,11 +75,13 @@ export const data = [
         "cards": [
           {
             "id": '25',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": ""
           },
           {
             "id": '26',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": ""
           }
         ]
       }

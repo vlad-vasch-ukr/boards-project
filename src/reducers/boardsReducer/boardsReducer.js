@@ -17,16 +17,25 @@ export const boardsReducer = createSlice({
       }
     },
     updateColumnsOrder: (state, { payload }) => {
-      state.boards.find((board) => board.id === payload.boardId).columns = payload.data
+      state.boards.find((board) => board.id === payload.boardId).columns = payload.data;
     },
     addNewColumn: (state, { payload }) => {
-      state.boards.find((board) => board.id === payload.boardId).columns.push(payload.data)
+      state.boards.find((board) => board.id === payload.boardId).columns.push(payload.data);
     },
     addNewCard: (state, { payload }) => {
-      state.boards.find((board) => board.id === payload.boardId).columns[payload.index].cards.push(payload.data)
+      state.boards.find((board) => board.id === payload.boardId).columns[payload.index].cards.push(payload.data);
     },
     addNewBoard: (state, { payload }) => {
       state.boards.push(payload);
+    },
+    updateCardDescription: (state, { payload }) => {
+      state.boards
+          .find((board) => board.id === payload.boardId)
+          .columns
+          .find((column) => column.id === payload.columnId)
+          .cards
+          .find((card) => card.id === payload.cardId)
+          .description = payload.data;
     }
   },
 })
@@ -36,7 +45,8 @@ export const {
   updateColumnsOrder,
   addNewColumn,
   addNewBoard,
-  addNewCard
+  addNewCard,
+  updateCardDescription
 } = boardsReducer.actions
 
 export default boardsReducer.reducer

@@ -1,7 +1,7 @@
 button.custom-button {
-  @apply inline-block transition-all duration-300 mr-2;
+  @apply inline-block transition-all duration-300;
 
-  &:not(.gray) {
+  &:not(.gray):not(.transparent) {
     @apply bg-blue-800 text-white py-1 px-8 hover:bg-blue-600;
   }
 
@@ -15,6 +15,10 @@ button.custom-button {
 
   &.gray {
     @apply bg-gray-500 hover:bg-gray-400 bg-opacity-25 rounded-sm px-3 py-1;
+  }
+
+  &.transparent {
+    @apply py-1 px-8;
   }
 
   &.with-icon {

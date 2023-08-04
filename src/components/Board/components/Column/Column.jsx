@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useClickAway } from '@uidotdev/usehooks';
 import SimpleBar from 'simplebar-react';
@@ -13,7 +13,7 @@ import { createNewCardObject } from '../Board/helpers/index.js';
 import './Column.scss';
 
 function Column(props) {
-  const {title, index, id, items, boardId, onCardClick} = props;
+  const {title, index, id, items, boardId, isDraggingOver, onCardClick} = props;
   const dispatch = useDispatch();
   const [isOpened, setIsOpened] = useState(false);
   const ref = useClickAway(() => setIsOpened(false));
@@ -31,6 +31,10 @@ function Column(props) {
     const newCard = createNewCardObject(name);
     dispatch(addNewCard({ data: newCard, index, boardId }));
   }
+
+  useEffect(() => {
+    simpleBarRef.current.recalculate();
+  }, [isDraggingOver]);
 
   return (
     <Draggable draggableId={id} index={index} >
@@ -94,13 +98,15 @@ Column.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isDragging: PropTypes.bool,
   boardId: PropTypes.string,
-  onCardClick: PropTypes.func
+  onCardClick: PropTypes.func,
+  isDraggingOver: PropTypes.bool
 }
 
 Column.defaultProps = {
   title: '',
   items: [],
-  onCardClick: () => {}
+  onCardClick: () => {},
+  isDraggingOver: false
 }
 
 export default Column;

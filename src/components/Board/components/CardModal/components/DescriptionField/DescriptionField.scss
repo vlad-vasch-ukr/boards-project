@@ -5,7 +5,7 @@
     @apply flex items-center;
   }
 
-  &__field, &__actions {
+  &__field {
     @apply mt-5;
     padding-left: calc(24px + 0.5rem);
   }
@@ -15,11 +15,7 @@
   }
 
   .editor {
-    @apply p-[6px] border-[1px];
-
-    .public-DraftStyleDefault-block {
-      @apply m-0 min-h-[220px];
-    }
+    @apply p-[6px] border-[1px] min-h-[220px];
   }
 
   .editor-wrapper {
@@ -28,5 +24,9 @@
 
   .editor-toolbar {
     @apply m-0;
+  }
+
+  &__actions {
+    @apply mt-5;
   }
 }

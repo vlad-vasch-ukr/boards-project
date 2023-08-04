@@ -1,40 +1,30 @@
 import { useState } from 'react';
-import { convertToRaw, EditorState, convertFromHTML, convertFromRaw, ContentState } from 'draft-js';
+import PropTypes from 'prop-types';
+import { convertToRaw, EditorState, convertFromHTML, ContentState } from 'draft-js';
+import parse from 'html-react-parser';
 import draftToHtmlPuri from 'draftjs-to-html';
-import { Editor } from "react-draft-wysiwyg";
+import { Editor } from 'react-draft-wysiwyg';
 import { Icon } from '../../../../../../UI/Icons/index.js';
 import Button from '../../../../../../UI/Button/Button.jsx';
+import { prepareHtmlStringForEditor } from '../../helpers/index.js';
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import './DescriptionField.scss';
-import PropTypes from "prop-types";
 
-function DescriptionField({ isEdit, description }) {
-
+function DescriptionField({ onSave, description }) {
     const [isEditorOpened, setEditorOpened] = useState(false);
-    const sampleMarkup =
-        '<b>Bold text</b>, <i>Italic text</i><br/ ><br />' +
-        '<a href="http://www.facebook.com">Example link</a>';
-    const blocksFromHTML = convertFromHTML(sampleMarkup);
-    const state = ContentState.createFromBlockArray(
-        blocksFromHTML.contentBlocks,
-        blocksFromHTML.entityMap,
-    );
-
-    const [editorState, setEditorState] = useState(EditorState.createWithContent(state));
-    const onEditorStateChange = function (editorState) {
-        setEditorState(editorState);
-
-        const html = draftToHtmlPuri(convertToRaw(editorState.getCurrentContent()));
-
-        /*let text = blocks.reduce((acc, item) => {
-          acc = acc + item.text;
-          return acc;
-        }, "");*/
-        let text = editorState.getCurrentContent().getPlainText("\u0001");
-        console.log(text)
-        // setText(text);
-    };
+    const [editorState, setEditorState] = useState(prepareHtmlStringForEditor(description));
+    const onEditorStateChange = (editorStore) => setEditorState(editorStore);
+    //const currHtml = draftToHtmlPuri(convertToRaw(editorState.getCurrentContent()));
     const openEditor = () => setEditorOpened(true);
+    const closeEditor = () => {
+        //setEditorState(EditorState.createWithContent(state));
+        setEditorOpened(false);
+    }
+    const saveChanges = () => {
+        const html = draftToHtmlPuri(convertToRaw(editorState.getCurrentContent()));
+        onSave(html);
+        closeEditor();
+    }
 
     return (
         <div className="description-field">
@@ -59,30 +49,44 @@ function DescriptionField({ isEdit, description }) {
                     </div>
                 ) }
                 { isEditorOpened && (
-                    <Editor
-                        editorState={editorState}
-                        toolbarClassName="editor-toolbar"
-                        wrapperClassName="editor-wrapper"
-                        editorClassName="editor"
-                        onEditorStateChange={onEditorStateChange}
-                    />) }
-                { !isEditorOpened && description && <div>{description}</div> }
-            </div>
-            <div className="description-field__actions">
-                <Button>
-                    Save
-                </Button>
+                    <>
+                        <Editor
+                            editorState={editorState}
+                            toolbarClassName="editor-toolbar"
+                            wrapperClassName="editor-wrapper"
+                            editorClassName="editor"
+                            onEditorStateChange={onEditorStateChange}
+                        />
+                        <div className="description-field__actions">
+                            <Button onClick={saveChanges}>
+                                Save
+                            </Button>
+                            <Button
+                                variant="transparent"
+                                className="ml-2"
+                                onClick={closeEditor}
+                            >
+                                Cancel
+                            </Button>
+                        </div>
+                    </>
+                ) }
+                { !isEditorOpened && description && (
+                    <div className="cursor-pointer" onClick={openEditor}>{ parse(description) }</div>
+                ) }
             </div>
         </div>
     );
 }
 
 DescriptionField.propTypes= {
-    description: PropTypes.string
+    description: PropTypes.string,
+    onSave: PropTypes.func
 }
 
 DescriptionField.defaultProps = {
-    description: ''
+    description: '',
+    onSave: () => {}
 }
 
 export default DescriptionField;

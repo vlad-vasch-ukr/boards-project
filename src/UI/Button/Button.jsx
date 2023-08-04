@@ -7,7 +7,7 @@ function Button({type, onClick, disabled, className, children, variant, withIcon
   return (
     <button
       type={type}
-      className={classnames(className, 'custom-button', { gray: variant === 'gray', 'with-icon': withIcon })}
+      className={classnames(className, 'custom-button', { gray: variant === 'gray', transparent: variant === 'transparent', 'with-icon': withIcon })}
       onClick={onClick}
       disabled={disabled}
       {...props}
