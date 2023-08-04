@@ -17,7 +17,8 @@ export const data = [
           },
           {
             "id": '12',
-            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel."
+            "name": "Integer posuere, lorem in placerat facilisis, sapien est sagittis mauris, non euismod arcu tellus non ligula. Morbi a suscipit odio. Suspendisse feugiat massa libero, vitae condimentum augue accumsan vel.",
+            "description": "<p>Integer posuere, lorem in placerat facilisis <strong>euismod arcu tellus non ligula.</strong></p><p><i>Integer posuere, lorem in placerat facilisis</i> <strong>euismod arcu tellus non ligula.</strong></p>"
           },
           {
             "id": '13',
@@ -25,7 +26,8 @@ export const data = [
           },
           {
             "id": '14',
-            "name": "Lorem ipsum dolor"
+            "name": "Lorem ipsum dolor",
+            "description": "<p>Integer posuere, lorem in placerat facilisis <strong>euismod arcu tellus non ligula.</strong></p><p><i>Integer posuere, lorem in placerat facilisis</i> <strong>euismod arcu tellus non ligula.</strong></p>"
           },
           {
             "id": '15',
@@ -55,7 +57,8 @@ export const data = [
           },
           {
             "id": '24',
-            "name": "Lorem ipsum dolor"
+            "name": "Lorem ipsum dolor",
+            "description": "<p>Integer posuere, lorem in placerat facilisis <strong>euismod arcu tellus non ligula.</strong></p><p><i>Integer posuere, lorem in placerat facilisis</i> <strong>euismod arcu tellus non ligula.</strong></p>"
           }
         ]
       },

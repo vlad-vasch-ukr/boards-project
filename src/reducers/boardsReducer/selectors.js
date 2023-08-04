@@ -8,5 +8,5 @@ export const cardSelectorById = (state, boardId, columnId, cardId) => {
     return state.boardsList.boards
         .find((board) => board.id === boardId)
         ?.columns.find((column) => column.id === columnId)
-        .cards.find((card) => card.id === cardId)
+        ?.cards.find((card) => card.id === cardId)
 }

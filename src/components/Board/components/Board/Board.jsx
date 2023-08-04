@@ -54,11 +54,15 @@ function Board() {
     dispatch(addNewColumn({ data: newColumn, boardId }));
   }
   const clickCardHandler = (column, card) => {
-    setSearchParams((prev) => ({ ...prev, col: column.id, row: card.id }))
-    console.log(card)
-    setModalOpened(true)
+    setSearchParams((prev) => ({ ...prev, col: column.id, row: card.id }));
+    setModalOpened(true);
   }
-  const closeModal = () => setModalOpened(false);
+  const closeModal = () => {
+    searchParams.delete('row');
+    searchParams.delete('col');
+    setSearchParams(searchParams);
+    setModalOpened(false);
+  }
 
   if (!columns) return null;
 

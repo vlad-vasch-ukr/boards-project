@@ -25,7 +25,7 @@ function CardModal({ onClose, card }) {
                 </div>
                 <div className="card-modal__container">
                     <div>
-                        <DescriptionField />
+                        <DescriptionField description={card.description} />
                     </div>
                 </div>
             </div>
