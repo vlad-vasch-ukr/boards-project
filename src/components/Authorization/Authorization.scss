@@ -1,1 +1,25 @@
-.authorization {}
+.authorization {
+  &__wrapp {
+    @apply shadow-sm ring-1 ring-inset ring-gray-300 rounded-2xl p-3 bg-gray-300;
+  }
+
+  &__title {
+    @apply font-medium text-center text-2xl mb-3 w-[300px];
+  }
+
+  .custom-input:not(:first-child) {
+    @apply mt-2;
+  }
+
+  .custom-button {
+    @apply block ml-auto mr-auto mt-4;
+  }
+
+  &__message {
+    @apply shadow-sm ring-1 ring-inset ring-gray-300 rounded-2xl px-3 py-6 bg-gray-300 text-center mt-4;
+  }
+
+  &__link {
+    @apply text-blue-500;
+  }
+}
